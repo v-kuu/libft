@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 16:21:00 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/10/29 16:40:13 by vkuusela         ###   ########.fr       */
+/*   Created: 2024/10/30 11:33:56 by vkuusela          #+#    #+#             */
+/*   Updated: 2024/10/30 12:01:45 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <aio.h>
 
-void	*ft_memmove(void *destination, const void *source, size_t length)
+size_t	ft_strlcpy(char *destination, const char *source, size_t size)
 {
-	char		*writer;
+	size_t		length;
 	const char	*reader;
 
-	if (destination < source)
+	reader = source;
+	length = 0;
+	while (reader)
 	{
-		writer = destination;
-		reader = source;
-		while (length > 0)
-		{
-			*writer++ = *reader++;
-			length--;
-		}
+		reader++;
+		length++;
 	}
-	else
+	while (size > 0)
 	{
-		writer = destination + (length - 1);
-		reader = source + (length - 1);
-		while (length > 0)
-		{
-			writer[length - 1] = reader[length - 1];
-			length--;
-		}
+		*destination = *source;
+		size--;
 	}
-	return (destination);
+	*destination = 0;
+	return (length);
 }
