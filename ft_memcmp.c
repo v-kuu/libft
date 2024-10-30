@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 12:03:51 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/10/30 13:21:08 by vkuusela         ###   ########.fr       */
+/*   Created: 2024/10/30 13:35:04 by vkuusela          #+#    #+#             */
+/*   Updated: 2024/10/30 13:56:27 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <aio.h>
 
-size_t	ft_strlen(const char *string);
-
-size_t	ft_strlcat(char *destination, const char *source, size_t size)
+int	ft_memcmp(const void *first, const void *second, size_t length)
 {
-	size_t	length;
-	char	*writer;
+	unsigned char	*one;
+	unsigned char	*two;
 
-	length = ft_strlen(destination) + ft_strlen(source);
-	writer = destination + ft_strlen(destination) - 1;
-	while (source && (size - ft_strlen(destination) - 1) > 0)
+	one = (unsigned char *)first;
+	two = (unsigned char *)second;
+	if (length == 0)
+		return (0);
+	while (length > 0)
 	{
-		*writer++ = *source++;
-		size--;
+		if (*one != *two)
+			return (*one - *two);
+		one++;
+		two++;
+		length--;
 	}
-	*writer = 0;
-	return (length);
+	return (0);
 }

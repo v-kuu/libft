@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 12:03:51 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/10/30 13:21:08 by vkuusela         ###   ########.fr       */
+/*   Created: 2024/10/30 15:57:17 by vkuusela          #+#    #+#             */
+/*   Updated: 2024/10/30 16:02:41 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <aio.h>
 
-size_t	ft_strlen(const char *string);
-
-size_t	ft_strlcat(char *destination, const char *source, size_t size)
+char	*ft_substr(char const *string, unsigned int start, size_t len)
 {
-	size_t	length;
-	char	*writer;
-
-	length = ft_strlen(destination) + ft_strlen(source);
-	writer = destination + ft_strlen(destination) - 1;
-	while (source && (size - ft_strlen(destination) - 1) > 0)
-	{
-		*writer++ = *source++;
-		size--;
-	}
-	*writer = 0;
-	return (length);
+	
 }
