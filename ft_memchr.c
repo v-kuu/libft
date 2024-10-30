@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 12:03:51 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/10/30 13:21:08 by vkuusela         ###   ########.fr       */
+/*   Created: 2024/10/30 13:22:03 by vkuusela          #+#    #+#             */
+/*   Updated: 2024/10/30 13:32:59 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <aio.h>
 
-size_t	ft_strlen(const char *string);
-
-size_t	ft_strlcat(char *destination, const char *source, size_t size)
+void	*ft_memchr(const void *source, int character, size_t length)
 {
-	size_t	length;
-	char	*writer;
+	unsigned char	*finder;
+	unsigned char	needle;
 
-	length = ft_strlen(destination) + ft_strlen(source);
-	writer = destination + ft_strlen(destination) - 1;
-	while (source && (size - ft_strlen(destination) - 1) > 0)
+	finder = (unsigned char *)source;
+	needle = character;
+	while (*finder != needle && length > 0)
 	{
-		*writer++ = *source++;
-		size--;
+		finder++;
+		length--;
 	}
-	*writer = 0;
-	return (length);
+	return (finder);
 }

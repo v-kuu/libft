@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 12:03:51 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/10/30 13:21:08 by vkuusela         ###   ########.fr       */
+/*   Created: 2024/10/30 15:02:11 by vkuusela          #+#    #+#             */
+/*   Updated: 2024/10/30 15:27:45 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <aio.h>
+#include <stdlib.h>
 
-size_t	ft_strlen(const char *string);
-
-size_t	ft_strlcat(char *destination, const char *source, size_t size)
+void	*ft_calloc(size_t elements, size_t size)
 {
-	size_t	length;
-	char	*writer;
+	void	*area;
 
-	length = ft_strlen(destination) + ft_strlen(source);
-	writer = destination + ft_strlen(destination) - 1;
-	while (source && (size - ft_strlen(destination) - 1) > 0)
-	{
-		*writer++ = *source++;
-		size--;
-	}
-	*writer = 0;
-	return (length);
+	if (elements == 0 || size == 0)
+		return (0);
+	if ((elements * size) > (size_t)-1)
+		return (0);
+	area = malloc(elements * size);
+	return (area);
 }

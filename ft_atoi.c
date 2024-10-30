@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 12:03:51 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/10/30 13:21:08 by vkuusela         ###   ########.fr       */
+/*   Created: 2024/10/30 14:48:27 by vkuusela          #+#    #+#             */
+/*   Updated: 2024/10/30 15:01:25 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
-
-size_t	ft_strlen(const char *string);
-
-size_t	ft_strlcat(char *destination, const char *source, size_t size)
+int	ft_atoi(const char *string)
 {
-	size_t	length;
-	char	*writer;
+	int	sign;
+	int	result;
 
-	length = ft_strlen(destination) + ft_strlen(source);
-	writer = destination + ft_strlen(destination) - 1;
-	while (source && (size - ft_strlen(destination) - 1) > 0)
+	sign = 1;
+	result = 0;
+	while (*string == '+' || *string == '-')
 	{
-		*writer++ = *source++;
-		size--;
+		if (*string == '-')
+			sign *= -1;
+		string++;
 	}
-	*writer = 0;
-	return (length);
+	while (*string >= 48 && *string <= 57)
+	{
+		result = (result * 10) + *string - 48;
+		string++;
+	}
+	result *= sign;
+	return (result);
 }
