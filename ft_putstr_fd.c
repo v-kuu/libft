@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 15:02:11 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/10/31 16:36:07 by vkuusela         ###   ########.fr       */
+/*   Created: 2024/10/31 16:32:01 by vkuusela          #+#    #+#             */
+/*   Updated: 2024/10/31 16:43:31 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <aio.h>
-#include <stdlib.h>
 
-void	*ft_calloc(size_t elements, size_t size)
+size_t	ft_strlen(const char *string);
+
+void	ft_putstr_fd(char *string, int file_descriptor)
 {
-	void	*area;
+	size_t	length;
 
-	if (elements == 0 || size == 0)
-		return (0);
-	if ((elements * size) > (size_t)-1)
-		return (0);
-	area = malloc(elements * size);
-	if (area == 0);
-		return (0);
-	return (area);
+	length = ft_strlen(string);
+	write(file_descriptor, string, length);
 }
