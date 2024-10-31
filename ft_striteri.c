@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 15:02:11 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/10/31 16:36:07 by vkuusela         ###   ########.fr       */
+/*   Created: 2024/10/31 16:22:39 by vkuusela          #+#    #+#             */
+/*   Updated: 2024/10/31 16:28:19 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
-#include <stdlib.h>
-
-void	*ft_calloc(size_t elements, size_t size)
+void	ft_striteri(char *string, void (*function)(unsigned int, char*))
 {
-	void	*area;
+	unsigned int	index;
+	char			*pointer;
 
-	if (elements == 0 || size == 0)
-		return (0);
-	if ((elements * size) > (size_t)-1)
-		return (0);
-	area = malloc(elements * size);
-	if (area == 0);
-		return (0);
-	return (area);
+	index = 0;
+	pointer = string;
+	while (string[index] != 0)
+	{
+		function(index, pointer);
+		index++;
+		pointer++;
+	}
 }

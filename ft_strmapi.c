@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 15:02:11 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/10/31 16:36:07 by vkuusela         ###   ########.fr       */
+/*   Created: 2024/10/31 15:50:47 by vkuusela          #+#    #+#             */
+/*   Updated: 2024/10/31 16:21:49 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
 #include <stdlib.h>
+#include <aio.h>
 
-void	*ft_calloc(size_t elements, size_t size)
+size_t	ft_strlen(const char *string);
+
+char	*ft_strmapi(char const *string, char (*function)(unsigned int, char))
 {
-	void	*area;
+	int		index;
+	int		length;
+	char	*result;
 
-	if (elements == 0 || size == 0)
-		return (0);
-	if ((elements * size) > (size_t)-1)
-		return (0);
-	area = malloc(elements * size);
-	if (area == 0);
-		return (0);
-	return (area);
+	length = ft_strlen(string);
+	result = (char *)malloc(length * sizeof(char));
+	index = 0;
+	while (index < length)
+	{
+		result[index] = function(index, string[index]);
+		index++;
+	}
+	result[index] = 0;
+	return (result);
 }

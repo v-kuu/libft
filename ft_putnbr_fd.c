@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 15:02:11 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/10/31 16:36:07 by vkuusela         ###   ########.fr       */
+/*   Created: 2024/10/31 16:44:22 by vkuusela          #+#    #+#             */
+/*   Updated: 2024/10/31 16:47:10 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
-#include <stdlib.h>
+#include <unistd.h>
 
-void	*ft_calloc(size_t elements, size_t size)
+void	ft_putnbr_fd(int number, int file_descriptor)
 {
-	void	*area;
-
-	if (elements == 0 || size == 0)
-		return (0);
-	if ((elements * size) > (size_t)-1)
-		return (0);
-	area = malloc(elements * size);
-	if (area == 0);
-		return (0);
-	return (area);
+	write(file_descriptor, &number, 4);
 }
