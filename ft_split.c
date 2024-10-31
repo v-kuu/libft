@@ -6,13 +6,15 @@
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 11:15:28 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/10/31 11:53:30 by vkuusela         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:55:05 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <aio.h>
+#include <stdlib.h>
 
 static int	words(char const *source, char character);
+static char	*creator(char const *source, char character);
 
 char	**ft_split(char const *source, char character)
 {
@@ -23,6 +25,16 @@ char	**ft_split(char const *source, char character)
 	index = 0;
 	count = words(source, character);
 	array = (char **)malloc(count * sizeof(char **) + 1);
+	while (count > 0)
+	{
+		array[index] = creator(source, character);
+		index++;
+		count--;
+		while (*source != character)
+			source++;
+	}
+	array[index] = 0;
+	return (array);
 }
 
 static int	words(char const *source, char character)
