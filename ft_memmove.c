@@ -33,7 +33,7 @@ void	*ft_memmove(void *destination, const void *source, size_t length)
 		reader = source + (length - 1);
 		while (length > 0)
 		{
-			writer[length - 1] = reader[length - 1];
+			*writer-- = *reader--;
 			length--;
 		}
 	}
