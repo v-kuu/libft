@@ -6,13 +6,13 @@
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:59:29 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/10/29 16:07:23 by vkuusela         ###   ########.fr       */
+/*   Updated: 2024/10/31 17:01:18 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <aio.h>
 
-void	bzero(void *area, size_t length)
+void	ft_bzero(void *area, size_t length)
 {
 	size_t			index;
 	unsigned char	*writer;
