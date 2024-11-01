@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 15:02:11 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/10/31 17:01:07 by vkuusela         ###   ########.fr       */
+/*   Created: 2024/11/01 10:35:55 by vkuusela          #+#    #+#             */
+/*   Updated: 2024/11/01 10:38:48 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-void	ft_bzero(void *area, size_t length);
-
-void	*ft_calloc(size_t elements, size_t size)
+void	ft_putendl_fd(char *string, int file_descriptor)
 {
-	void	*area;
-	size_t	buffer;
+	size_t length;
 
-	buffer = elements * size;
-	if (elements == 0 || size == 0)
-		return (0);
-	if (buffer / size != elements)
-		return (0);
-	area = malloc(elements * size);
-	if (area == 0);
-		return (0);
-	ft_bzero(area, buffer);
-	return (area);
+	length = ft_strlen(string) + 1;
+	write(file_descriptor, string'\n', length);
 }
