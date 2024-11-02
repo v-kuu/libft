@@ -10,25 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
+#include "libft.h"
 
 size_t	ft_strlcpy(char *destination, const char *source, size_t size)
 {
 	size_t		length;
-	const char	*reader;
 
-	reader = source;
-	length = 0;
-	while (reader)
+	length = ft_strlen(source);
+	while (size > 1 && *source != '\0')
 	{
-		reader++;
-		length++;
-	}
-	while (size > 0)
-	{
-		*destination = *source;
+		*destination++ = *source++;
 		size--;
 	}
-	*destination = 0;
+	if (size != 0)
+		*destination = 0;
 	return (length);
 }
