@@ -10,20 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
+#include "libft.h"
 
 int	ft_strncmp(const char *first, const char *second, size_t length)
 {
-	size_t	index;
-
-	index = 0;
-	if (first == 0 && second == 0)
-		return (0);
-	while ((first[index] != 0 && second[index] != 0) && index < length)
+	while (length)
 	{
-		if (first[index] != second[index])
-			return (first[index] - second[index]);
-		index++;
+		if (*first != *second)
+			return (*first - *second);
+		if (*first == 0)
+			return (0);
+		length--;
+		first++;
+		second++;
 	}
 	return (0);
 }
