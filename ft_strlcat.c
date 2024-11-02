@@ -14,16 +14,19 @@
 
 size_t	ft_strlcat(char *destination, const char *source, size_t size)
 {
-	size_t	length;
-	char	*writer;
+	size_t	source_length;
+	size_t	dest_length;
 
-	length = ft_strlen(destination) + ft_strlen(source);
-	writer = destination + ft_strlen(destination) - 1;
-	while (source && (size - ft_strlen(destination) - 1) > 0)
+	source_length = ft_strlen(source);
+	dest_length = ft_strlen(destination);
+	if (dest_length >= size)
+		return (size + source_length);
+	if (size - dest_length > source_length)
+		ft_memcpy(destination + dest_length, source, source_length + 1);
+	else
 	{
-		*writer++ = *source++;
-		size--;
+		ft_memcpy(destination + dest_length, source, size - dest_length - 1);
+		destination[size - 1] = 0;
 	}
-	*writer = 0;
-	return (length);
+	return (source_length + dest_length);
 }
