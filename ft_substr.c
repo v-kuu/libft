@@ -10,21 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
-#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_substr(char const *string, unsigned int start, size_t length)
 {
 	char	*substring;
+	size_t	index;
 
 	substring = (char *)malloc(length * sizeof(char));
+	if (substring == 0)
+		return (0);
+	index = 0;
 	while (length > 0)
 	{
-		*substring = string[start];
-		substring++;
+		substring[index] = string[start];
+		index++;
 		start++;
 		length--;
 	}
-	*substring = 0;
+	substring[index] = 0;
 	return (substring);
 }
