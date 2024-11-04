@@ -10,12 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <aio.h>
+#include "libft.h"
 
 static int	ft_scanner(char suspect, char const *set);
-size_t		ft_strlen(const char *string);
-size_t		ft_strlcat(char	*destination, const char *source, size_t size);
 
 char	*ft_strtrim(char const *string, char const *set)
 {
@@ -23,15 +20,17 @@ char	*ft_strtrim(char const *string, char const *set)
 	char	*trimmed;
 
 	length = ft_strlen(string);
-	while (!ft_scanner(string[length - 2], set))
+	while (ft_scanner(string[length - 1], set))
 		length--;
-	while (!ft_scanner(*string, set))
+	while (ft_scanner(*string, set))
 	{
 		length--;
 		string++;
 	}
-	trimmed = (char *)malloc(length * sizeof(char));
-	ft_strlcat(trimmed, string, length);
+	trimmed = (char *)malloc(length * sizeof(char) + 1);
+	if (trimmed == 0)
+		return (0);
+	ft_strlcat(trimmed, string, length + 1);
 	return (trimmed);
 }
 
