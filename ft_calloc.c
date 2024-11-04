@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
-#include <stdlib.h>
-
-void	ft_bzero(void *area, size_t length);
+#include "libft.h"
 
 void	*ft_calloc(size_t elements, size_t size)
 {
@@ -21,11 +18,11 @@ void	*ft_calloc(size_t elements, size_t size)
 	size_t	buffer;
 
 	buffer = elements * size;
-	if (elements == 0 || size == 0)
+	if (buffer == 0)
 		return (0);
 	if (buffer / size != elements)
 		return (0);
-	area = malloc(elements * size);
+	area = malloc(buffer);
 	if (area == 0);
 		return (0);
 	ft_bzero(area, buffer);
