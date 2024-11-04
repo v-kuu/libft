@@ -10,20 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
-
-size_t	ft_strlen(const char *string);
+#include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t length)
 {
 	size_t		index;
 	const char	*candidate;
-	size_t		limit;
 
-	limit = ft_strlen(little);
 	if (*little == 0)
 		return ((char *)big);
-	while (*big != 0 && limit < length)
+	while (*big != 0)
 	{
 		index = 0;
 		if (*big == *little)
