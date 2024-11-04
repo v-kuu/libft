@@ -10,19 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
+#include "libft.h"
 
 void	*ft_memchr(const void *source, int character, size_t length)
 {
-	unsigned char	*finder;
+	unsigned char	*haystack;
 	unsigned char	needle;
 
-	finder = (unsigned char *)source;
+	haystack = (unsigned char *)source;
 	needle = character;
-	while (*finder != needle && length > 0)
+	while (length > 0)
 	{
-		finder++;
+		if (*haystack == needle)
+			return (haystack);
+		haystack++;
 		length--;
 	}
-	return (finder);
+	return (0);
 }
