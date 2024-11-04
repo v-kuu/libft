@@ -23,7 +23,7 @@ void	*ft_calloc(size_t elements, size_t size)
 	if (buffer / size != elements)
 		return (0);
 	area = malloc(buffer);
-	if (area == 0);
+	if (area == 0)
 		return (0);
 	ft_bzero(area, buffer);
 	return (area);
