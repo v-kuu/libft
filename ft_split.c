@@ -10,34 +10,41 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-static int	words(char const *source, char character);
-static char	*creator(char const *source, char character);
+static size_t	words(char const *source, char character);
+static void		free_all(char **array);
 
 char	**ft_split(char const *source, char character)
 {
 	char	**array;
-	int		count;
-	int		index;
+	size_t	index;
+	size_t	length;
 
 	index = 0;
-	count = words(source, character);
-	array = (char **)malloc(count * sizeof(char **) + 1);
-	while (count > 0)
+	array = ft_calloc(words(source, character) + 1, sizeof(char *));
+	if (!array || !source)
+		return (0);
+	while (*source)
 	{
-		array[index] = creator(source, character);
-		index++;
-		count--;
-		while (*source != character)
+		while (*source == character && *source)
 			source++;
+		if (*source && array)
+		{
+			if (!ft_strchr(source, character))
+				length = ft_strlen(source);
+			else
+				length = ft_strchr(source, character) - source;
+			array[index++] = ft_substr(source, 0, length);
+			if (array[index - 1] == 0)
+				free_all(array);
+			source += length;
+		}
 	}
-	array[index] = 0;
 	return (array);
 }
 
-static int	words(char const *source, char character)
+static size_t	words(char const *source, char character)
 {
 	int	count;
 
@@ -51,22 +58,12 @@ static int	words(char const *source, char character)
 	return (count);
 }
 
-static char	*creator(char const *source, char character)
+static void	free_all(char **array)
 {
-	size_t	index;
-	char	*word;
-
-	index = 0;
-	while (source[index] != 0 && source[index] != character)
+	while (*array)
 	{
-		index++;
+		free(*array);
+		array++;
 	}
-	word = (char *)malloc((index + 1) * sizeof(char));
-	while (index > 0)
-	{
-		*word++ = *source++;
-		index--;
-	}
-	*word = 0;
-	return (word);
+	free(array);
 }
