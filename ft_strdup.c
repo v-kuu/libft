@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <aio.h>
-
-size_t	ft_strlen(const char *string);
+#include "libft.h"
 
 char	*ft_strdup(const char *string)
 {
 	size_t	elements;
 	char	*duplicate;
 
-	elements = ft_strlen(string);
+	elements = ft_strlen(string) + 1;
 	duplicate = (char *)malloc(elements * sizeof(char));
+	if (duplicate == 0)
+		return (0);
+	ft_strlcpy(duplicate, string, elements);
 	return (duplicate);
 }
