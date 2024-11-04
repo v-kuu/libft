@@ -10,30 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <aio.h>
-
-size_t	ft_strlen(const char *string);
+#include "libft.h"
 
 char	*ft_strjoin(char const *prefix, char const *suffix)
 {
 	size_t	length;
+	size_t	index;
 	char	*joined;
 
 	length = ft_strlen(prefix) + ft_strlen(suffix);
-	joined = (char *)malloc(length * sizeof(char));
+	joined = (char *)malloc(length * sizeof(char) + 1);
+	if (joined == 0)
+		return (0);
+	index = 0;
 	while (*prefix != 0)
 	{
-		*joined = *prefix;
-		joined++;
+		joined[index] = *prefix;
+		index++;
 		prefix++;
 	}
 	while (*suffix != 0)
 	{
-		*joined = *suffix;
-		joined++;
+		joined[index] = *suffix;
+		index++;
 		suffix++;
 	}
-	*joined = 0;
+	joined[index] = 0;
 	return (joined);
 }
