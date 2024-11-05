@@ -10,15 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <aio.h>
-
-size_t	ft_strlen(const char *string);
+#include "libft.h"
 
 void	ft_putstr_fd(char *string, int file_descriptor)
 {
-	size_t	length;
-
-	length = ft_strlen(string);
-	write(file_descriptor, string, length);
+	write(file_descriptor, string, ft_strlen(string));
 }
