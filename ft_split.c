@@ -12,8 +12,8 @@
 
 #include "libft.h"
 
-static size_t	words(char const *source, char character);
-static void		free_all(char **array);
+static size_t	ft_words(char const *source, char character);
+static void		ft_free_all(char **array);
 
 char	**ft_split(char const *source, char character)
 {
@@ -22,7 +22,7 @@ char	**ft_split(char const *source, char character)
 	size_t	length;
 
 	index = 0;
-	array = ft_calloc(words(source, character) + 1, sizeof(char *));
+	array = ft_calloc(ft_words(source, character) + 1, sizeof(char *));
 	if (!array || !source)
 		return (0);
 	while (*source)
@@ -37,14 +37,14 @@ char	**ft_split(char const *source, char character)
 				length = ft_strchr(source, character) - source;
 			array[index++] = ft_substr(source, 0, length);
 			if (array[index - 1] == 0)
-				free_all(array);
+				ft_free_all(array);
 			source += length;
 		}
 	}
 	return (array);
 }
 
-static size_t	words(char const *source, char character)
+static size_t	ft_words(char const *source, char character)
 {
 	int	count;
 
@@ -58,7 +58,7 @@ static size_t	words(char const *source, char character)
 	return (count);
 }
 
-static void	free_all(char **array)
+static void	ft_free_all(char **array)
 {
 	while (*array)
 	{
