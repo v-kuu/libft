@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <aio.h>
-
-size_t	ft_strlen(const char *string);
+#include "libft.h"
 
 char	*ft_strmapi(char const *string, char (*function)(unsigned int, char))
 {
@@ -22,7 +19,7 @@ char	*ft_strmapi(char const *string, char (*function)(unsigned int, char))
 	char	*result;
 
 	length = ft_strlen(string);
-	result = (char *)malloc(length * sizeof(char));
+	result = (char *)malloc(length * sizeof(char) + 1);
 	index = 0;
 	while (index < length)
 	{
