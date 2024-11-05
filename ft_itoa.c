@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-static int	digit_count(int integer);
+static int	ft_digit_count(int integer);
 
 char	*ft_itoa(int integer)
 {
@@ -21,33 +21,35 @@ char	*ft_itoa(int integer)
 	int		size;
 
 	sign = (integer < 0);
+	size = ft_digit_count(integer);
+	if (sign)
+		integer *= -1;
+	string = (char *)ft_calloc(size + sign + 1, sizeof(char));
+	if (string == 0)
+		return (0);
 	if (integer == 0)
+		string[0] = '0';
+	while (integer > 0)
 	{
-		string = (char *)malloc(2 * sizeof(char));
-		string = "0\0";
+		string[size - 1] = integer % 10 + 48;
+		size--;
+		integer /= 10;
 	}
-	else
-	{
-		size = digit_count(integer);
-		string = (char *)malloc((size + sign + 1) * sizeof(char));
-		string[size - 1] = 0;
-		while (integer > 0)
-		{
-			string[size - 2] = integer % 10 + 48;
-			size--;
-			integer /= 10;
-		}
-		if (sign)
-			string[size - 2] = '-';
-	}
+	if (sign)
+		string[0] = '-';
 	return (string);
 }
 
-static int	digit_count(int integer)
+static int	ft_digit_count(int integer)
 {
 	int	count;
 
 	count = 1;
+	if (integer < 0)
+	{
+		integer *= -1;
+		count++;
+	}
 	while (integer > 9)
 	{
 		count++;
