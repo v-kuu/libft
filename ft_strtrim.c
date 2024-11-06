@@ -30,7 +30,7 @@ char	*ft_strtrim(char const *string, char const *set)
 	trimmed = (char *)malloc(length * sizeof(char) + 1);
 	if (trimmed == 0)
 		return (0);
-	ft_strlcat(trimmed, string, length + 1);
+	ft_strlcpy(trimmed, string, length + 1);
 	return (trimmed);
 }
 

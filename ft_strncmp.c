@@ -14,15 +14,20 @@
 
 int	ft_strncmp(const char *first, const char *second, size_t length)
 {
+	unsigned char	*first_u;
+	unsigned char	*second_u;
+
+	first_u = (unsigned char *)first;
+	second_u = (unsigned char *)second;
 	while (length)
 	{
-		if (*first != *second)
-			return (*first - *second);
-		if (*first == 0)
+		if (*first_u != *second_u)
+			return (*first_u - *second_u);
+		if (*first_u == 0)
 			return (0);
 		length--;
-		first++;
-		second++;
+		first_u++;
+		second_u++;
 	}
 	return (0);
 }

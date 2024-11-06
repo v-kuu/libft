@@ -15,11 +15,13 @@
 char	*ft_strnstr(const char *big, const char *little, size_t length)
 {
 	size_t		index;
+	size_t		little_len;
 	const char	*candidate;
 
-	if (*little == 0)
+	little_len = ft_strlen(little);
+	if (little_len == 0)
 		return ((char *)big);
-	while (*big != 0)
+	while (*big != 0 && length > 0 && length >= little_len)
 	{
 		index = 0;
 		if (*big == *little)
