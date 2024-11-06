@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:35:37 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/11/06 13:28:02 by vkuusela         ###   ########.fr       */
+/*   Created: 2024/11/06 12:56:49 by vkuusela          #+#    #+#             */
+/*   Updated: 2024/11/06 13:05:03 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *list)
+void	ft_lstiter(t_list *list, void (*func)(void *))
 {
-	while (list != 0)
-		list = list->next;
-	return (list);
+	t_list	*temp;
+
+	temp = list;
+	while (temp != 0)
+	{
+		func(temp->content);
+		temp = temp->next;
+	}
 }
