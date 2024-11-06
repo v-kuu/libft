@@ -52,4 +52,11 @@ void	ft_putstr_fd(char *string, int file_descriptor);
 void	ft_putendl_fd(char *string, int file_descriptor);
 void	ft_putnbr_fd(int number, int file_descriptor);
 
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+
+}				t_list;
+
 #endif
