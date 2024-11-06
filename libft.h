@@ -6,7 +6,7 @@
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 10:04:32 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/11/01 10:35:38 by vkuusela         ###   ########.fr       */
+/*   Updated: 2024/11/06 12:56:09 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include <aio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+
+}				t_list;
 
 int		ft_isalpha(unsigned char character);
 int		ft_isdigit(unsigned char character);
@@ -51,12 +58,14 @@ void	ft_putchar_fd(char character, int file_descriptor);
 void	ft_putstr_fd(char *string, int file_descriptor);
 void	ft_putendl_fd(char *string, int file_descriptor);
 void	ft_putnbr_fd(int number, int file_descriptor);
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-
-}				t_list;
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **list, t_list *new);
+int		ft_lstsize(t_list *list);
+t_list	*ft_lstlast(t_list *list);
+void	ft_lstadd_back(t_list **list, t_list *new);
+void	ft_lstdelone(t_list *list, void (*delete)(void *));
+void	ft_lstclear(t_list **list, void (*delete)(void *));
+void	ft_lstiter(t_list *list, void (*func)(void *));
+t_list	*ft_lstmap(t_list *list, void *(*func)(void *), void (*delete)(void *));
 
 #endif
