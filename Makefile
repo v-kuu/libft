@@ -6,7 +6,7 @@
 #    By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 15:04:16 by vkuusela          #+#    #+#              #
-#    Updated: 2024/11/05 15:26:12 by vkuusela         ###   ########.fr        #
+#    Updated: 2024/11/05 15:33:25 by vkuusela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ all:	$(NAME)
 $(NAME):	$(OBJECTS) $(INCLUDE)
 	$(AR) $(NAME) $(OBJECTS)
 
-.c.o:	$(CC) (CFLAGS) -I$(INCLUDE) -c $< -o $(<:.c=.o)
+.c.o:	$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $(<:.c=.o)
 
 clean:
 	$(RM) $(OBJECTS)
