@@ -20,8 +20,6 @@ RM = rm -f
 
 AR = ar -rcs
 
-INCLUDE = libft.h
-
 SOURCES = ft_isdigit.c ft_memset.c ft_strdup.c ft_strncmp.c \
 		  ft_atoi.c ft_isprint.c ft_putchar_fd.c ft_striteri.c \
 		  ft_strnstr.c ft_bzero.c ft_itoa.c ft_putendl_fd.c ft_strjoin.c \
@@ -37,7 +35,7 @@ all:	$(NAME)
 $(NAME):	$(OBJECTS) $(INCLUDE)
 	$(AR) $(NAME) $(OBJECTS)
 
-.c.o:	$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $(<:.c=.o)
+.c.o:	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 clean:
 	$(RM) $(OBJECTS)
