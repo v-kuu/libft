@@ -28,7 +28,11 @@ SOURCES = ft_isdigit.c ft_memset.c ft_strdup.c ft_strncmp.c \
 		  ft_substr.c ft_isalpha.c ft_memcpy.c ft_split.c ft_strlen.c ft_tolower.c \
 		  ft_isascii.c ft_memmove.c ft_strchr.c ft_strmapi.c ft_toupper.c
 
+BONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c
+
 OBJECTS = $(SOURCES:.c=.o)
+
+BONUS_OBJECTS = $(BONUS:.c=.o)
 
 all:	$(NAME)
 
@@ -45,4 +49,7 @@ fclean:	clean
 
 re: 	fclean all
 
-.PHONY: all clean fclean re
+bonus:	$(OBJECTS) $(BONUS_OBJECTS)
+	$(AR) $(NAME) $(BONUS_OBJECTS)
+
+.PHONY: all clean fclean re bonus

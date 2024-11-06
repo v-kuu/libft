@@ -23,6 +23,7 @@ t_list	*ft_lstmap(t_list *list, void *(*func)(void *), void (*delete)(void *))
 	if (!new)
 		return (0);
 	temp = new;
+	list = list->next;
 	while (list)
 	{
 		temp->next = ft_lstnew(func(list->content));
