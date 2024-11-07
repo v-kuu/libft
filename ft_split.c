@@ -12,24 +12,24 @@
 
 #include "libft.h"
 
-static size_t	ft_words(char const *source, char character);
-static void		ft_free_all(char **array);
+static size_t	ft_words(char const *source, unsigned char character);
+static char		**ft_free_all(char **array);
 
 char	**ft_split(char const *source, char character)
 {
-	char	**array;
-	size_t	index;
-	size_t	length;
+	char			**array;
+	size_t			index;
+	size_t			length;
 
 	index = 0;
 	array = ft_calloc(ft_words(source, character) + 1, sizeof(char *));
-	if (!array || !source)
+	if (!array || !source || character < 0)
 		return (0);
-	while (*source)
+	while (*source && array)
 	{
 		while (*source == character && *source)
 			source++;
-		if (*source && array)
+		if (*source)
 		{
 			if (!ft_strchr(source, character))
 				length = ft_strlen(source);
@@ -37,14 +37,14 @@ char	**ft_split(char const *source, char character)
 				length = ft_strchr(source, character) - source;
 			array[index++] = ft_substr(source, 0, length);
 			if (array[index - 1] == 0)
-				ft_free_all(array);
+				array = ft_free_all(array);
 			source += length;
 		}
 	}
 	return (array);
 }
 
-static size_t	ft_words(char const *source, char character)
+static size_t	ft_words(char const *source, unsigned char character)
 {
 	int	count;
 
@@ -58,7 +58,7 @@ static size_t	ft_words(char const *source, char character)
 	return (count);
 }
 
-static void	ft_free_all(char **array)
+static char	**ft_free_all(char **array)
 {
 	while (*array)
 	{
@@ -66,4 +66,5 @@ static void	ft_free_all(char **array)
 		array++;
 	}
 	free(array);
+	return (0);
 }
