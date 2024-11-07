@@ -37,7 +37,7 @@ BONUS_OBJECTS = $(BONUS:.c=.o)
 
 all:	$(NAME)
 
-$(NAME):	$(OBJECTS) $(INCLUDE)
+$(NAME):	$(OBJECTS)
 	$(AR) $(NAME) $(OBJECTS)
 
 .c.o:	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
@@ -51,6 +51,6 @@ fclean:	clean
 re: 	fclean all
 
 bonus:	$(OBJECTS) $(BONUS_OBJECTS)
-	$(AR) $(NAME) $(BONUS_OBJECTS)
+	$(AR) $(NAME) $(OBJECTS) $(BONUS_OBJECTS)
 
 .PHONY: all clean fclean re bonus
