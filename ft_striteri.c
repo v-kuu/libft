@@ -13,14 +13,12 @@
 void	ft_striteri(char *string, void (*function)(unsigned int, char*))
 {
 	unsigned int	index;
-	char			*pointer;
 
 	index = 0;
-	pointer = string;
-	while (string[index] != 0)
+	while (*string != 0)
 	{
-		function(index, pointer);
+		function(index, string);
 		index++;
-		pointer++;
+		string++;
 	}
 }
