@@ -14,6 +14,8 @@
 
 void	ft_putendl_fd(char *string, int file_descriptor)
 {
+	if (!string)
+		return ;
 	write(file_descriptor, string, ft_strlen(string));
 	write(file_descriptor, "\n", 1);
 }

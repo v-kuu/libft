@@ -14,6 +14,8 @@ void	ft_striteri(char *string, void (*function)(unsigned int, char*))
 {
 	unsigned int	index;
 
+	if (!string || !function)
+		return ;
 	index = 0;
 	while (*string != 0)
 	{
