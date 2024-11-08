@@ -20,9 +20,9 @@ char	*ft_strtrim(char const *string, char const *set)
 	char	*trimmed;
 
 	length = ft_strlen(string);
-	while (ft_scanner(string[length - 1], set))
+	while (ft_scanner(string[length - 1], set) && length > 0)
 		length--;
-	while (ft_scanner(*string, set))
+	while (ft_scanner(*string, set) && length > 0)
 	{
 		length--;
 		string++;

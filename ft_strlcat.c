@@ -17,6 +17,8 @@ size_t	ft_strlcat(char *destination, const char *source, size_t size)
 	size_t	source_length;
 	size_t	dest_length;
 
+	if (!destination && !size)
+		return (0);
 	source_length = ft_strlen(source);
 	dest_length = ft_strlen(destination);
 	if (dest_length >= size)
