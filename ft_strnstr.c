@@ -27,12 +27,12 @@ char	*ft_strnstr(const char *big, const char *little, size_t length)
 		index = 0;
 		if (*big == *little)
 		{
-			while (big[index] == little[index])
+			while (big[index] == little[index] && index < length)
 			{
 				index++;
+				if (little[index] == 0)
+					return ((char *)big);
 			}
-			if (little[index] == 0)
-				return ((char *)big);
 		}
 		big++;
 		length--;
