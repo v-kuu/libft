@@ -17,9 +17,12 @@ void	*ft_calloc(size_t elements, size_t size)
 	void	*area;
 	size_t	buffer;
 
+	if (elements == 0 || size == 0)
+	{
+		elements = 1;
+		size = 1;
+	}
 	buffer = elements * size;
-	if (buffer == 0)
-		return (0);
 	if (buffer / size != elements)
 		return (0);
 	area = malloc(buffer);

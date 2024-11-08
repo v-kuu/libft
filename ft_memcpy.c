@@ -16,17 +16,12 @@ void	*ft_memcpy(void *destination, const void *source, size_t length)
 {
 	char		*writer;
 	const char	*reader;
-	size_t		index;
 
-	if (!destination || !source)
+	if ((!destination && !source) && length)
 		return (0);
 	writer = destination;
 	reader = source;
-	index = 0;
-	while (index < length)
-	{
-		writer[index] = reader[index];
-		index++;
-	}
+	while (length--)
+		*writer++ = *reader++;
 	return (destination);
 }
