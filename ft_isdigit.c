@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(unsigned char character)
+int	ft_isdigit(int character)
 {
 	if (character >= 48 && character <= 57)
 		return (1);

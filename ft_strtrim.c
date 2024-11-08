@@ -19,6 +19,8 @@ char	*ft_strtrim(char const *string, char const *set)
 	size_t	length;
 	char	*trimmed;
 
+	if (!string || !set)
+		return (0);
 	length = ft_strlen(string);
 	while (ft_scanner(string[length - 1], set) && length > 0)
 		length--;

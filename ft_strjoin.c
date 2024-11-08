@@ -18,6 +18,8 @@ char	*ft_strjoin(char const *prefix, char const *suffix)
 	size_t	index;
 	char	*joined;
 
+	if (!prefix || !suffix)
+		return (0);
 	length = ft_strlen(prefix) + ft_strlen(suffix);
 	joined = (char *)malloc(length * sizeof(char) + 1);
 	if (joined == 0)

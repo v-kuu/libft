@@ -22,9 +22,9 @@ char	**ft_split(char const *source, char character)
 	size_t			length;
 
 	index = 0;
-	array = ft_calloc(ft_words(source, character) + 1, sizeof(char *));
-	if (!array || !source || character < 0)
+	if (!source || character < 0)
 		return (0);
+	array = ft_calloc(ft_words(source, character) + 1, sizeof(char *));
 	while (*source && array)
 	{
 		while (*source == character && *source)
