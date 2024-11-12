@@ -14,18 +14,21 @@
 
 void	ft_putnbr_fd(int number, int file_descriptor)
 {
-	if (number < 0)
+	long	input;
+
+	input = number;
+	if (input < 0)
 	{
 		write(file_descriptor, "-", 1);
-		if (number == -2147483648)
+		if (input == -2147483648)
 		{
 			write(file_descriptor, "2", 1);
 			ft_putnbr_fd(147483648, file_descriptor);
 			return ;
 		}
-		number *= -1;
+		input *= -1;
 	}
-	if (number > 9)
-		ft_putnbr_fd(number / 10, file_descriptor);
-	ft_putchar_fd(number % 10 + 48, file_descriptor);
+	if (input > 9)
+		ft_putnbr_fd(input / 10, file_descriptor);
+	ft_putchar_fd(input % 10 + 48, file_descriptor);
 }
