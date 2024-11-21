@@ -62,7 +62,11 @@ SOURCES 	= ft_isdigit.c \
 			  ft_lstclear.c \
 			  ft_lstiter.c \
 			  ft_lstmap.c \
-			  ft_lstlast.c
+			  ft_lstlast.c \
+			  ft_printf.c \
+			  ft_hex_print.c \
+			  ft_string_print.c \
+			  ft_number_print.c
 
 OBJECTS 	= $(SOURCES:.c=.o)
 
