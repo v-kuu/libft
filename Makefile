@@ -55,7 +55,7 @@ SOURCES 	= ft_isdigit.c \
 			  ft_strmapi.c \
 			  ft_toupper.c \
 			  ft_lstnew.c \
-			  ft_lstadd.c \
+			  ft_lstadd_front.c \
 			  ft_lstsize.c \
 			  ft_lstadd_back.c \
 			  ft_lstdelone.c \
