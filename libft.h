@@ -13,9 +13,11 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <aio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
+# include <stdarg.h>
+# include <stdint.h>
 
 typedef struct s_list
 {
@@ -67,5 +69,9 @@ void	ft_lstdelone(t_list *list, void (*delete)(void *));
 void	ft_lstclear(t_list **list, void (*delete)(void *));
 void	ft_lstiter(t_list *list, void (*func)(void *));
 t_list	*ft_lstmap(t_list *list, void *(*func)(void *), void (*delete)(void *));
+int		ft_printf(const char *format, ...);
+int		ft_string_print(const char *string);
+int		ft_number_print(long number);
+int		ft_hex_print(uintptr_t number, char specifier);
 
 #endif
