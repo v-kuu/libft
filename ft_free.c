@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	*ft_free(void **ptr)
+void	*ft_free(char **ptr)
 {
 	free(*ptr);
 	*ptr = NULL;

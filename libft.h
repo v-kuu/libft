@@ -80,6 +80,6 @@ int		ft_string_print(const char *string);
 int		ft_number_print(long number);
 int		ft_hex_print(uintptr_t number, char specifier);
 char	*get_next_line(int fd);
-void	*ft_free(void **ptr);
+void	*ft_free(char **ptr);
 
 #endif

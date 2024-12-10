@@ -15,7 +15,6 @@
 static char	*ft_update(int fd, char leftovers[BUFFER_SIZE]);
 static char	*ft_rewrite(char *buffer, char leftovers[BUFFER_SIZE]);
 static void	ft_save(size_t cutoff, char *buffer, char leftovers[BUFFER_SIZE]);
-static char	*ft_free(char **string);
 
 char	*get_next_line(int fd)
 {
@@ -99,11 +98,4 @@ static void	ft_save(size_t cutoff, char *buffer, char leftovers[BUFFER_SIZE])
 	}
 	leftovers[index] = 0;
 	ft_free(&buffer);
-}
-
-static char	*ft_free(char **string)
-{
-	free(*string);
-	*string = NULL;
-	return (NULL);
 }
