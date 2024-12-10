@@ -6,7 +6,7 @@
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 10:04:32 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/11/06 12:56:09 by vkuusela         ###   ########.fr       */
+/*   Updated: 2024/12/10 11:18:12 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ int		ft_string_print(const char *string);
 int		ft_number_print(long number);
 int		ft_hex_print(uintptr_t number, char specifier);
 char	*get_next_line(int fd);
+void	*ft_free(void **ptr);
 
 #endif
