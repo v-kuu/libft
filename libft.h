@@ -12,6 +12,12 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
+# ifndef OPEN_MAX
+#  define OPEN_MAX 12
+# endif
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -73,5 +79,6 @@ int		ft_printf(const char *format, ...);
 int		ft_string_print(const char *string);
 int		ft_number_print(long number);
 int		ft_hex_print(uintptr_t number, char specifier);
+char	*get_next_line(int fd);
 
 #endif
