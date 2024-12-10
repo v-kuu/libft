@@ -15,7 +15,6 @@
 static int	ft_parse(va_list arguments, const char *format);
 static int	ft_convert(va_list content, char specifier);
 static bool	ft_is_valid(char specifier);
-static bool	ft_edge_handle(char next);
 
 int	ft_printf(const char *format, ...)
 {
@@ -44,7 +43,7 @@ static int	ft_parse(va_list arguments, const char *format)
 			temp = ft_convert(arguments, *(format + 1));
 			format += 2;
 		}
-		else if (*format == '%' && !ft_edge_handle(format[1]))
+		else if (*format == '%')
 			return (-1);
 		else
 		{
@@ -89,17 +88,4 @@ static bool	ft_is_valid(char specifier)
 		set++;
 	}
 	return (false);
-}
-
-static bool	ft_edge_handle(char next)
-{
-	static bool	edge_case;
-
-	if (next == 0 && edge_case == false)
-		return (false);
-	else
-	{
-		edge_case = true;
-		return (true);
-	}
 }
