@@ -19,6 +19,8 @@
 #  define OPEN_MAX 12
 # endif
 
+# define FT_FREE(ptr) ft_free_base((void **)&(ptr))
+
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
@@ -80,6 +82,6 @@ int		ft_string_print(const char *string);
 int		ft_number_print(long number);
 int		ft_hex_print(uintptr_t number, char specifier);
 char	*get_next_line(int fd);
-void	*ft_free(void **ptr);
+void	*ft_free_base(void **ptr);
 
 #endif
