@@ -12,7 +12,10 @@
 
 #include "libft.h"
 
-void	*ft_free(void **ptr)
+/* Calling the function with the macro ft_free(ptr) defined in libft.h
+ * allows you to use this function without worrying about typecasting. */
+
+void	*ft_free_base(void **ptr)
 {
 	free(*ptr);
 	*ptr = NULL;
