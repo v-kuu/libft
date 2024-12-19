@@ -6,7 +6,7 @@
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 10:04:32 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/12/10 11:18:12 by vkuusela         ###   ########.fr       */
+/*   Updated: 2024/12/19 15:32:42 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #  define OPEN_MAX 12
 # endif
 
-# define FT_FREE(ptr) ft_free_base((void **)&(ptr))
+# define FT_FREE(ptr) ft_free((void **)&(ptr))
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -82,6 +82,6 @@ int		ft_string_print(const char *string);
 int		ft_number_print(long number);
 int		ft_hex_print(uintptr_t number, char specifier);
 char	*get_next_line(int fd);
-void	*ft_free_base(void **ptr);
+void	*ft_free(void **ptr);
 
 #endif
