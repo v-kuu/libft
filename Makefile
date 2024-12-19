@@ -67,7 +67,7 @@ SOURCES 	= ft_isdigit.c \
 			  ft_hex_print.c \
 			  ft_string_print.c \
 			  ft_number_print.c \
-			  ft_free_base.c \
+			  ft_free.c \
 			  get_next_line.c
 
 OBJECTS 	= $(SOURCES:.c=.o)
