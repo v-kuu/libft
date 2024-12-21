@@ -15,12 +15,8 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 32
 # endif
-# ifndef OPEN_MAX
-#  define OPEN_MAX 12
-# endif
 
-# define FT_FREE(ptr) ft_free((void **)&(ptr))
-
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
