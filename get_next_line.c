@@ -18,7 +18,7 @@ static void	ft_save(size_t cutoff, char *buffer, char leftovers[BUFFER_SIZE]);
 
 char	*get_next_line(int fd)
 {
-	static char	leftovers[OPEN_MAX][BUFFER_SIZE + 1];
+	static char	leftovers[FOPEN_MAX][BUFFER_SIZE + 1];
 	char		*buffer;
 	char		*line;
 	size_t		length;
@@ -27,14 +27,14 @@ char	*get_next_line(int fd)
 		return (NULL);
 	buffer = ft_update(fd, leftovers[fd]);
 	if (!buffer || !*buffer)
-		return (FT_FREE(buffer));
+		return (ft_free((void **)&buffer));
 	if (!ft_strchr(buffer, '\n'))
 		length = ft_strlen(buffer);
 	else
 		length = ft_strchr(buffer, '\n') - buffer;
 	line = ft_substr(buffer, 0, length + 1);
 	if (!line)
-		return (FT_FREE(buffer));
+		return (ft_free((void **)&buffer));
 	ft_save(length + 1, buffer, leftovers[fd]);
 	return (line);
 }
@@ -46,7 +46,7 @@ static char	*ft_update(int fd, char leftovers[BUFFER_SIZE])
 
 	buffer = (char *)ft_calloc(1, 1);
 	if (!buffer)
-		return (FT_FREE(buffer));
+		return (ft_free((void **)&buffer));
 	if (leftovers[0] != '\0')
 		buffer = ft_rewrite(buffer, leftovers);
 	while (!ft_strchr(buffer, '\n'))
@@ -54,7 +54,7 @@ static char	*ft_update(int fd, char leftovers[BUFFER_SIZE])
 		amount_read = read(fd, leftovers, BUFFER_SIZE);
 		if (amount_read < 0)
 		{
-			FT_FREE(buffer);
+			ft_free((void **)&buffer);
 			return (NULL);
 		}
 		if (amount_read == 0)
@@ -76,9 +76,9 @@ static char	*ft_rewrite(char *buffer, char leftovers[BUFFER_SIZE])
 	leftovers_len = ft_strlen(leftovers);
 	new = ft_calloc(buffer_len + leftovers_len + 1, sizeof(char));
 	if (!new)
-		return (FT_FREE(buffer));
+		return (ft_free((void **)&buffer));
 	ft_memcpy(new, buffer, buffer_len);
-	FT_FREE(buffer);
+	ft_free((void **)&buffer);
 	ft_memcpy(ft_strchr(new, '\0'), leftovers, leftovers_len);
 	return (new);
 }
@@ -97,5 +97,5 @@ static void	ft_save(size_t cutoff, char *buffer, char leftovers[BUFFER_SIZE])
 		index++;
 	}
 	leftovers[index] = 0;
-	FT_FREE(buffer);
+	ft_free((void **)&buffer);
 }
