@@ -22,9 +22,9 @@ char	*ft_strtrim(char const *string, char const *set)
 	if (!string || !set)
 		return (0);
 	length = ft_strlen(string);
-	while (ft_scanner(string[length - 1], set) && length > 0)
+	while (length > 0 && ft_scanner(string[length - 1], set))
 		length--;
-	while (ft_scanner(*string, set) && length > 0)
+	while (length > 0 && ft_scanner(*string, set))
 	{
 		length--;
 		string++;
