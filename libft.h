@@ -6,14 +6,14 @@
 /*   By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 10:04:32 by vkuusela          #+#    #+#             */
-/*   Updated: 2024/12/19 15:32:42 by vkuusela         ###   ########.fr       */
+/*   Updated: 2025/01/28 12:06:08 by vkuusela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32
+#  define BUFFER_SIZE 500
 # endif
 
 # include <stdio.h>
@@ -79,5 +79,8 @@ int		ft_number_print(long number);
 int		ft_hex_print(uintptr_t number, char specifier);
 char	*get_next_line(int fd);
 void	*ft_free(void **ptr);
+int		ft_abs(int number);
+char	*ft_strtok(char *str, const char *delim);
+void	*ft_free_str_arr(char **array);
 
 #endif

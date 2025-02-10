@@ -6,19 +6,21 @@
 #    By: vkuusela <vkuusela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 15:04:16 by vkuusela          #+#    #+#              #
-#    Updated: 2024/12/10 11:20:15 by vkuusela         ###   ########.fr        #
+#    Updated: 2025/01/28 12:06:23 by vkuusela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC 			= cc
 
-CFLAGS 		= -Wall -Wextra -Werror
+CFLAGS 		= -Wall -Wextra -Werror -I.
 
 NAME 		= libft.a
 
 RM 			= rm -f
 
 AR 			= ar -rcs
+
+HEADERS		= libft.h
 
 SOURCES 	= ft_isdigit.c \
 			  ft_memset.c \
@@ -68,9 +70,15 @@ SOURCES 	= ft_isdigit.c \
 			  ft_string_print.c \
 			  ft_number_print.c \
 			  ft_free.c \
-			  get_next_line.c
+			  get_next_line.c \
+			  ft_abs.c \
+			  ft_strtok.c \
+			  ft_free_str_arr.c
 
 OBJECTS 	= $(SOURCES:.c=.o)
+
+%.o:		%.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all:		$(NAME)
 
