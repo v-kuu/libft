@@ -72,7 +72,6 @@ SOURCES 	= ft_isdigit.c \
 			  ft_free.c \
 			  get_next_line.c \
 			  ft_abs.c \
-			  ft_strtok.c \
 			  ft_free_str_arr.c
 
 OBJECTS 	= $(SOURCES:.c=.o)

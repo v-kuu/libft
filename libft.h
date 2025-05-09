@@ -13,7 +13,7 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 500
+#  define BUFFER_SIZE 1000
 # endif
 
 # include <stdio.h>
@@ -65,14 +65,14 @@ void	ft_putstr_fd(char *string, int file_descriptor);
 void	ft_putendl_fd(char *string, int file_descriptor);
 void	ft_putnbr_fd(int number, int file_descriptor);
 t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **list, t_list *new);
+void	ft_lstadd_front(t_list **list, t_list *node);
 int		ft_lstsize(t_list *list);
 t_list	*ft_lstlast(t_list *list);
-void	ft_lstadd_back(t_list **list, t_list *new);
-void	ft_lstdelone(t_list *list, void (*delete)(void *));
-void	ft_lstclear(t_list **list, void (*delete)(void *));
+void	ft_lstadd_back(t_list **list, t_list *node);
+void	ft_lstdelone(t_list *list, void (*del)(void *));
+void	ft_lstclear(t_list **list, void (*del)(void *));
 void	ft_lstiter(t_list *list, void (*func)(void *));
-t_list	*ft_lstmap(t_list *list, void *(*func)(void *), void (*delete)(void *));
+t_list	*ft_lstmap(t_list *list, void *(*func)(void *), void (*del)(void *));
 int		ft_printf(const char *format, ...);
 int		ft_string_print(const char *string);
 int		ft_number_print(long number);
@@ -80,7 +80,6 @@ int		ft_hex_print(uintptr_t number, char specifier);
 char	*get_next_line(int fd);
 void	*ft_free(void **ptr);
 int		ft_abs(int number);
-char	*ft_strtok(char *str, const char *delim);
 void	*ft_free_str_arr(char **array);
 
 #endif

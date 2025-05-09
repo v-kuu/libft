@@ -53,7 +53,7 @@ static int	ft_recursive_hex(uintptr_t number, char specifier)
 			return (-1);
 	}
 	else
-	{	
+	{
 		if (specifier == 'X')
 		{
 			if (write(1, &(char){number % 16 + 55}, 1) < 0)
